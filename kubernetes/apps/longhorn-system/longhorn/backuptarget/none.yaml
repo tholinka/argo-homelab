@@ -1,0 +1,13 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackupTarget
+metadata:
+  creationTimestamp: null
+  finalizers:
+    - longhorn.io
+  name: default
+  namespace: longhorn-system
+spec:
+  backupTargetURL: ''
+  credentialSecret: ''
+  pollInterval: 5m0s

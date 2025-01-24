@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: unifi
+  labels:
+    app: unifi
+spec:
+  serviceName: unifi
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unifi
+  template:
+    metadata:
+      labels:
+        app: unifi
+    spec:
+      containers:
+        - name: unifi
+          image: lscr.io/linuxserver/unifi-network-application:9.0.108-ls76
+          resources:
+            requests:
+              memory: '56Mi'
+              cpu: '100m'
+            limits:
+              memory: '1500Mi'
+              cpu: '512m'
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MEM_LIMIT
+              value: '1024'
+            - name: MEM_STARTUP
+              value: '1024'
+            - name: MONGO_DBNAME
+              value: unifi
+            - name: MONGO_HOST
+              value: mongo-prod-0.mongo-prod-svc.mongodb.svc.cluster.local
+            - name: MONGO_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: unifi-mongo
+                  key: password
+            - name: MONGO_PORT
+              value: '27017'
+            - name: MONGO_USER
+              value: unifi
+            - name: PGID
+              value: '65534'
+            - name: PUID
+              value: '65534'
+            - name: TZ
+              value: America/Chicago
+          ports:
+            - name: device-comm
+              containerPort: 8080
+              protocol: TCP
+            - name: stun
+              containerPort: 3478
+              protocol: UDP
+            - name: default-console
+              containerPort: 8443
+              protocol: TCP
+            - name: secure-redirect
+              containerPort: 8843
+              protocol: TCP
+            - name: http-redirect
+              containerPort: 8880
+              protocol: TCP
+            - name: speedtest
+              containerPort: 6789
+              protocol: TCP
+            - name: unifi-disc
+              containerPort: 10001
+              protocol: UDP
+            - name: unifi-disc-l2
+              containerPort: 1900
+              protocol: UDP
+            - name: syslog
+              containerPort: 5514
+              protocol: UDP
+          volumeMounts:
+            - name: unifi-data
+              mountPath: /config
+              readOnly: false
+      volumes:
+        - name: unifi-data
+          persistentVolumeClaim:
+            claimName: unifi-pvc

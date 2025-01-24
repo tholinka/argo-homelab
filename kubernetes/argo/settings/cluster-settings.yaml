@@ -8,11 +8,11 @@ metadata:
     argocd.argoproj.io/sync-wave: '0'
 spec:
   destinations:
-    - name: "*"
-      namespace: "*"
-      server: "*"
+    - name: '*'
+      namespace: '*'
+      server: '*'
   sourceRepos:
-    - "*"
+    - '*'
   clusterResourceWhitelist:
-    - group: "*"
-      kind: "*"
+    - group: '*'
+      kind: '*'

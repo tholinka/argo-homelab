@@ -9,6 +9,7 @@ Some inspiration:
 - https://github.com/crkochan/argocd-homelab
 - https://github.com/clearlybaffled/homelab
 - https://github.com/danmanners/homelab-kube-cluster
+- https://github.com/brunnels/talos-cluster/
 
 ### Bootstrap
 

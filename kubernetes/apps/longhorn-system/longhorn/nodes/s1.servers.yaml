@@ -30,6 +30,6 @@ spec:
         - large
         - slow
   evictionRequested: false
-  instanceManagerCPURequest: 0
+  instanceManagerCPURequest: 10
   name: s1.servers.local
   tags: [large, small, storage]

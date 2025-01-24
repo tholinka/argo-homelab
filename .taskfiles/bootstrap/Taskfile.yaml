@@ -2,9 +2,6 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: '3'
 
-env:
-  TALOSCONFIG: '{{.TALHELPER_CLUSTER_DIR}}/talosconfig'
-
 tasks:
   apps:
     desc: Bootstrap apps into the Talos cluster
@@ -12,12 +9,17 @@ tasks:
       - until kubectl wait --for=condition=Ready=True nodes --all --timeout=600s; do sleep 10; done
       - kubectl create namespace argo-system --dry-run=client -o yaml | kubectl apply --server-side --filename -
       - '{{if eq .SOPS_SECRET_EXISTS "false"}}cat {{.SOPS_AGE_KEY_FILE}} | kubectl --namespace argo-system create secret generic helm-secrets-private-keys --from-file=key.txt=/dev/stdin{{end}}'
+      - kubectl create namespace external-secrets --dry-run=client -o yaml | kubectl apply --server-side --filename -
+      - '{{if eq .BITWARDEN_SECRET_EXISTS "false"}}cat {{.BITWARDEN_KEY_FILE}} | tr -d "\r\n " | kubectl --namespace external-secrets create secret generic bitwarden-secrets-manager --from-file=token=/dev/stdin{{end}}'
       - helmfile --file {{.KUBERNETES_DIR}}/bootstrap/helmfile.yaml apply --skip-diff-on-install --suppress-diff
       - kubectl apply --server-side --filename {{.KUBERNETES_DIR}}/argo
     vars:
       SOPS_SECRET_EXISTS:
-        sh: kubectl --namespace argo-system get secret sops-age &>/dev/null && echo true || echo false
+        sh: kubectl --namespace argo-system get secret helm-secrets-private-keys &>/dev/null && echo true || echo false
+      BITWARDEN_SECRET_EXISTS:
+        sh: kubectl --namespace external-secrets get secret bitwarden-secrets-manager &>/dev/null && echo true || echo false
     preconditions:
       - test -f {{.KUBERNETES_DIR}}/bootstrap/helmfile.yaml
       - test -f {{.SOPS_AGE_KEY_FILE}}
-      - which helmfile kubectl sops
+      - test -f {{.BITWARDEN_KEY_FILE}}
+      - which helmfile helm kubectl sops
