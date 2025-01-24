@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tholinka-dev-production-tls
+spec:
+  secretName: tholinka-dev-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: tholinka.dev
+  dnsNames:
+    - tholinka.dev
+    - '*.tholinka.dev'

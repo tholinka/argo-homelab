@@ -1,0 +1,23 @@
+---
+creation_rules:
+  - path_regex: kubernetes/apps/argo-system/argo-cd/values.sops.yaml
+    encrypted_regex: '^(argocdServerAdminPassword|githubSecret|sshPrivateKey)$'
+    mac_only_encrypted: true
+    key_groups:
+      - age:
+          - 'age1j34t6fwv5evlf9gxchc3x9v6zypufszzuynxycrxk4r4jwxtfq9ss9dmtr'
+  - path_regex: kubernetes/apps/network/cloudflared/config/dnsendpoint.sops.yaml
+    encrypted_regex: '^(targets)$'
+    mac_only_encrypted: true
+    key_groups:
+      - age:
+          - 'age1j34t6fwv5evlf9gxchc3x9v6zypufszzuynxycrxk4r4jwxtfq9ss9dmtr'
+  - path_regex: kubernetes/.*\.sops\.ya?ml
+    encrypted_regex: '^(data|stringData)$'
+    mac_only_encrypted: true
+    key_groups:
+      - age:
+          - 'age1j34t6fwv5evlf9gxchc3x9v6zypufszzuynxycrxk4r4jwxtfq9ss9dmtr'
+stores:
+  yaml:
+    indent: 2

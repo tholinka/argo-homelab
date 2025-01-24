@@ -1,0 +1,45 @@
+---
+preUpgradeChecker:
+  jobEnabled: false
+
+networkPolicies:
+  enabled: true
+  type: 'k3s'
+
+persistence:
+  # commented are defaults
+  defaultClass: true
+  defaultFsType: 'ext4'
+  defaultMkfsParams: ''
+  defaultClassReplicaCount: 3
+  defaultDataLocality: 'best-effort'
+  reclaimPolicy: Retain
+  migratable: false
+  disableRevisionCounter: true
+  recurringJobSelector:
+    enabled: true
+    jobList: |
+      [
+        { 'name': 'snap', 'isGroup': true },
+        { 'name': 'backup', 'isGroup': false },
+      ]
+  defaultDiskSelector:
+    enabled: true
+    selector: 'small'
+  defaultNodeSelector:
+    enabled: true
+    selector: 'storage,small'
+
+defaultSettings:
+  defaultDataPath: '/var/lib/longhorn'
+  defaultDataLocality: 'best-effort'
+  replicaSoftAntiAffinity: false
+  replicaAutoBalance: 'least-effort'
+  autoSalvage: true
+
+defaultBackupStore:
+  backupTarget: nfs://192.168.1.2:/backups
+
+metrics:
+  serviceMonitor:
+    enabled: true

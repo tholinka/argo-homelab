@@ -1,0 +1,6 @@
+{
+	"sops.defaults.ageKeyFile": "age.key",
+	"yaml.schemas": {
+		"Kubernetes": "./kubernetes/**/*.yaml"
+	},
+}

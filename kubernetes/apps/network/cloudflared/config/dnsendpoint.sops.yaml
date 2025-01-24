@@ -1,0 +1,31 @@
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: cloudflared
+spec:
+  endpoints:
+    - dnsName: external.tholinka.dev
+      recordType: CNAME
+      targets:
+        - ENC[AES256_GCM,data:OKU/fE3+a6G2WQDbPm0fFzvIgSm+o16d+Jb7W7lDUnYme2imY3uPOfIwLm5U677tLvqYwZE=,iv:gVBFFBSM6Y0qqlPt6YE1dyODnuE2lzkkNoYILxty5sA=,tag:4+pgG69oFm8CYvXaGmbq5w==,type:str]
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1j34t6fwv5evlf9gxchc3x9v6zypufszzuynxycrxk4r4jwxtfq9ss9dmtr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUQUJ1OGI3bHZ0dmlDemV6
+        bW9vSkN4clltTHhxckNpZmp4NWpXQkVuc1U0CmhaQWc3WnZiS09iSDJybElPUXRm
+        OUVpVHlpd1hqbmI4WW5tTnJaT1RBRk0KLS0tIFhPUHM0UjhxbDNwUHFwSk4vOFdD
+        Um9tb2loeDRsdEFhUGtlbFBlRFpVWncKtCSZIqCf4oVjUOEqH9qHZ6vCCClpRT54
+        K6rm7KKrlD7ho3vKQhjO3zqOXWcVivClzhGwrnupdbXxMKB2p0jEug==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: '2025-01-24T15:27:10Z'
+  mac: ENC[AES256_GCM,data:ZtWtKYcX4PZjxtZ/FkCIZhot8eJxAn2Pwga/cCSd26F3wqv1PgZ3mOlguckJawY79tnyijuCQ0qi9ISzVkIGebS05IpzQH9E0HaQK7Mko5mIASkWOJj4Ck7UTJhO+zRBK3NXku5C71JeyHuqDzpqvIoDTTYh7BLr2v0E2mGn8Kg=,iv:G/smuwW8ckoenAFhMamBcgBYQO4UlI6wyiG94GWxeHo=,tag:7hM8tMusDQMel/jxwH+Crg==,type:str]
+  pgp: []
+  encrypted_regex: ^(targets)$
+  mac_only_encrypted: true
+  version: 3.9.1

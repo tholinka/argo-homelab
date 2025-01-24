@@ -1,0 +1,23 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/helmfile
+
+helmDefaults:
+  timeout: 600
+  force: true
+  wait: true
+  waitForJobs: true
+
+repositories: []
+
+releases:
+  - name: prometheus-operator-crds
+    namespace: observability
+    chart: oci://ghcr.io/prometheus-community/charts/prometheus-operator-crds
+    version: 17.0.2
+
+  - name: argo-cd
+    namespace: argo-system
+    chart: oci://ghcr.io/argoproj/argo-helm/argo-cd
+    version: 7.7.16
+    secrets:
+      - ../apps/argo-system/argo-cd/values.sops.yaml
