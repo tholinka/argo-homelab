@@ -11,3 +11,4 @@ spec:
   dnsNames:
     - tholinka.dev
     - '*.tholinka.dev'
+    - '*.external.tholinka.dev'
