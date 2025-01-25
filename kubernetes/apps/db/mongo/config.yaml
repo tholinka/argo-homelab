@@ -40,7 +40,7 @@ spec:
             name: logs-volume
           spec:
             accessModes: ['ReadWriteOnce']
-            storageClassName: longhorn
+            storageClassName: longhorn-replicated
             resources:
               requests:
                 storage: 2G

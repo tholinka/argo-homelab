@@ -5,9 +5,9 @@ metadata:
   creationTimestamp: null
   finalizers:
     - longhorn.io
-  name: none
+  name: default
   namespace: longhorn-system
 spec:
-  backupTargetURL: ''
+  backupTargetURL: 'nfs://192.168.1.2:/backups'
   credentialSecret: ''
   pollInterval: 5m0s
