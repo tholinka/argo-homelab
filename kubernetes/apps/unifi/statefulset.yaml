@@ -34,7 +34,7 @@ spec:
             - name: MONGO_DBNAME
               value: unifi
             - name: MONGO_HOST
-              value: mongo-prod-0.mongo-prod-svc.mongodb.svc.cluster.local
+              value: mongo-0.mongo-svc.db.svc.cluster.local
             - name: MONGO_PASS
               valueFrom:
                 secretKeyRef:
