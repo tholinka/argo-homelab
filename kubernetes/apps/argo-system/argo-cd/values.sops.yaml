@@ -2,6 +2,8 @@ crds:
   install: true
 global:
   domain: argo.tholinka.dev
+  networkPolicy:
+    create: true
 configs:
   params:
     server.insecure: true
@@ -24,11 +26,12 @@ controller:
       additionalLabels:
         release: kube-prometheus-stack
 dex:
+  enabled: false
   replicas: 2
   metrics:
-    enabled: true
+    enabled: false
     serviceMonitor:
-      enabled: true
+      enabled: false
       additionalLabels:
         release: kube-prometheus-stack
 redis:

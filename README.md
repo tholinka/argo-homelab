@@ -176,4 +176,4 @@ Add `config.gateway.json`
 }
 ```
 
-Run `chown 1000:1000 config.gateway.json`
+Run `chown 65534:65534 config.gateway.json`

@@ -3,7 +3,8 @@ preUpgradeChecker:
   jobEnabled: false
 
 networkPolicies:
-  enabled: true
+  # networkPolicies break metrics, since there's no way to add the prometheus label as allowed
+  enabled: false
   type: 'k3s'
 
 persistence:
