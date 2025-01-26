@@ -8,7 +8,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: db
+    namespace: mongo
     name: in-cluster
   project: default
   sources:
@@ -16,7 +16,7 @@ spec:
       repoURL: 'https://mongodb.github.io/helm-charts'
       targetRevision: 0.12.0
     - repoURL: https://github.com/tholinka/homelab.git
-      path: kubernetes/apps/db/mongo
+      path: kubernetes/apps/mongo/mongo
       targetRevision: main
       ref: repo
   syncPolicy:
