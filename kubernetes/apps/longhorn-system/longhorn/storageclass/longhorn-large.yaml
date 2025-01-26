@@ -16,3 +16,7 @@ parameters:
   diskSelector: 'large'
   #nodeSelector: 'storage,large'
   recurringJobSelector: '[]'
+  dataLocality: 'best-effort'
+  unmapMarkSnapChainRemoved: 'ignored'
+  disableRevisionCounter: 'true'
+  dataEngine: 'v1'

@@ -1,0 +1,55 @@
+persistence:
+  size: 5Gi
+  storageClass: longhorn-large
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+replicas: 1
+
+mode: standalone
+
+users:
+  - accessKey: loki
+    secretKey: supersecretpassword
+    policy: readwrite
+  - accessKey: mimir
+    secretKey: supersecretpassword
+    policy: readwrite
+svcaccts:
+  - accessKey: loki-svcacct
+    secretKey: supersecretpassword
+    user: loki
+  - accessKey: mimir-svcacct
+    secretKey: supersecretpassword
+    user: mimir
+
+buckets:
+  #loki
+  - name: loki-chunk
+    policy: none
+    purge: false
+  - name: loki-ruler
+    policy: none
+    purge: false
+  - name: loki-admin
+    policy: none
+    purge: false
+  #mimir
+  - name: mimir-tsdb
+    policy: none
+    purge: false
+  - name: mimir-ruler
+    policy: none
+    purge: false
+  - name: enterprise-metrics-tsdb
+    policy: none
+    purge: false
+  - name: enterprise-metrics-admin
+    policy: none
+    purge: false
+  - name: enterprise-metrics-ruler
+    policy: none
+    purge: false

@@ -1,0 +1,35 @@
+# from https://github.com/longhorn/longhorn/issues/3473#issuecomment-2001928894
+
+apiVersion: v1
+kind: Pod
+metadata:
+  #labels:
+  #  name: myvolman
+  name: myvolman
+spec:
+  containers:
+    - image: busybox
+      name: myvolmigpod
+      command:
+        - sleep
+        - '99999999'
+      volumeMounts:
+        - mountPath: /data/old
+          name: old
+        - mountPath: /data/new
+          name: new
+  volumes:
+    - name: old
+      hostPath:
+        path: /raid/containers
+    - name: new
+      persistentVolumeClaim:
+        claimName: unifi-longhorn-pvc
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+# kubectl scale -n namespace sts sts-name --replicas=0
+# kubectl apply -f volume-manager.yaml -n namespace
+# kubectl exec -ti myvolman -n namespace -- /bin/sh
+# cp -a /data/old/. data/new/
+# kubectl delete pod myvolman -n namespace
+# kubectl scale -n namespace sts sts-name --replicas=1

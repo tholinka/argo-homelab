@@ -90,7 +90,7 @@ grafana:
   additionalDataSources:
     - name: Loki
       type: loki
-      url: http://loki-gateway.monitoring.svc.cluster.local
+      url: http://loki-gateway.observability.svc.cluster.local
 
 # k3s specific setup: https://github.com/k3s-io/k3s/issues/3619#issuecomment-878501106, https://github.com/k3s-io/k3s/issues/3619#issuecomment-973188304
 # bunch of minor fixes here: https://github.com/k3s-io/k3s/issues/3619#issuecomment-1991598167
