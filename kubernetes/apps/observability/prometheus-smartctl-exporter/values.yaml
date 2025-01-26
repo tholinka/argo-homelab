@@ -1,0 +1,4 @@
+prometheusRules:
+  enabled: true
+serviceMonitor:
+  enabled: true
