@@ -1,0 +1,25 @@
+apiVersion: longhorn.io/v1beta2
+kind: Node
+metadata:
+  creationTimestamp: null
+  finalizers:
+    - longhorn.io
+  name: p2.servers.local
+  namespace: longhorn-system
+spec:
+  allowScheduling: true
+  disks:
+    ssd-1:
+      allowScheduling: true
+      diskDriver: ''
+      diskType: filesystem
+      evictionRequested: false
+      path: /var/lib/longhorn
+      storageReserved: 0 # 40 GiB
+      tags:
+        - fast
+        - small
+  evictionRequested: false
+  instanceManagerCPURequest: 10
+  name: p2.servers.local
+  tags: [small, storage]

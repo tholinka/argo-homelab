@@ -10,6 +10,7 @@ Some inspiration:
 - https://github.com/clearlybaffled/homelab
 - https://github.com/danmanners/homelab-kube-cluster
 - https://github.com/brunnels/talos-cluster/
+- https://github.com/bjw-s/helm-charts
 
 ### Bootstrap
 
