@@ -11,4 +11,4 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   type: git
-  url: https://github.com/tholinka/homelab.git
+  url: https://github.com/tholinka/argo-homelab.git

@@ -46,7 +46,7 @@ Some inspiration:
 
 1) Install spegel, argo and sync the cluster to the repository state:
 
-    Make sure `helm`, `kubectl`, `helmfile`, `go-task` (also might have to do `ln -s /bin/task /bin/go-task` if on arch) `sops` is installed
+    Make sure `helm kubectl helmfile go-task sops` (also might have to do `ln -s /bin/task /bin/go-task` if on arch)
 
     ```sh
     task bootstrap:apps

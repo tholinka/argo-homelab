@@ -9,7 +9,7 @@ metadata:
 spec:
   project: kubernetes
   sources:
-    - repoURL: https://github.com/tholinka/homelab.git
+    - repoURL: https://github.com/tholinka/argo-homelab.git
       path: kubernetes/apps/network/ingress-nginx/certificates
       targetRevision: main
       ref: repo

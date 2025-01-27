@@ -8,7 +8,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/tholinka/homelab.git
+    repoURL: https://github.com/tholinka/argo-homelab.git
     path: kubernetes/argo/apps
     targetRevision: main
     directory:

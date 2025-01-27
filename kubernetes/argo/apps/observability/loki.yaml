@@ -9,7 +9,7 @@ metadata:
 spec:
   project: kubernetes
   sources:
-    - repoURL: https://github.com/tholinka/homelab.git
+    - repoURL: https://github.com/tholinka/argo-homelab.git
       path: kubernetes/apps/observability/loki
       targetRevision: main
       ref: repo
