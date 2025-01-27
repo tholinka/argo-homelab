@@ -25,10 +25,14 @@ Some inspiration:
         kube-scheduler-arg:
         - "bind-address=0.0.0.0"
         etcd-expose-metrics: true
+        etcd-arg:
+        - heartbeat-interval: 1000
+        - election-timeout: 10000
         tls-san:
           - 192.168.1.3
 
         cluster-init: true
+        #server: https://192.168.1.3:6443 #enable if not first node
         snapshotter: btrfs
         secrets-encryption: true
         cluster-cidr: 10.42.0.0/16,2001:cafe:42::/56
